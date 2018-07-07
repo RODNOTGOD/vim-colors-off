@@ -67,6 +67,12 @@ else
   let s:visual          = s:light_blue
 endif
 
+endif
+
+if exists(":terminal")
+  highlight TermCursorNC ctermfg=15 guifg=#fdf6e3 ctermbg=14 guibg=#93a1a1 cterm=NONE gui=NONE
+endif
+
 " https://github.com/noahfrederick/vim-hemisu/
 function! s:h(group, style)
   execute "highlight" a:group
@@ -133,7 +139,7 @@ call s:h("SpecialKey",    {"fg": s:light_green})
 call s:h("NonText",       {"fg": s:medium_gray})
 call s:h("Directory",     {"fg": s:dark_blue})
 call s:h("ErrorMsg",      {"fg": s:pink})
-call s:h("IncSearch",     {"bg": s:yellow, "fg": s:light_black})
+call s:h("IncSearch",     {"bg": s:orange, "fg": s:light_black})
 call s:h("Search",        {"bg": s:bg_subtle, "fg": s:norm})
 call s:h("MoreMsg",       {"fg": s:medium_gray, "cterm": "bold", "gui": "bold"})
 hi! link ModeMsg MoreMsg
@@ -150,10 +156,10 @@ call s:h("WarningMsg",    {"fg": s:red})
 call s:h("WildMenu",      {"fg": s:bg, "bg": s:norm})
 call s:h("Folded",        {"fg": s:medium_gray})
 call s:h("FoldColumn",    {"fg": s:bg_subtle})
-call s:h("DiffAdd",       {"fg": s:green})
-call s:h("DiffDelete",    {"fg": s:red})
-call s:h("DiffChange",    {"fg": s:dark_yellow})
-call s:h("DiffText",      {"fg": s:dark_blue})
+call s:h("DiffAdd",       {"fg": s:black, "bg": s:green})
+call s:h("DiffDelete",    {"fg": s:white, "bg": s:red})
+call s:h("DiffChange",    {"fg": s:white, "bg": s:bg_very_subtle})
+call s:h("DiffText",      {"fg": s:red, "bg": s:bg_very_subtle})
 call s:h("SignColumn",    {"fg": s:light_green})
 
 if has("gui_running")
@@ -169,7 +175,7 @@ else
 endif
 
 call s:h("Pmenu",         {"fg": s:norm, "bg": s:bg_subtle})
-call s:h("PmenuSel",      {"fg": s:norm, "bg": s:blue})
+call s:h("PmenuSel",      {"fg": s:norm, "bg": s:orange})
 call s:h("PmenuSbar",     {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("PmenuThumb",    {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("TabLine",       {"fg": s:norm, "bg": s:bg_very_subtle})
@@ -189,14 +195,15 @@ call s:h("htmlH4",        {"bg": s:bg, "fg": s:norm})
 call s:h("htmlH5",        {"bg": s:bg, "fg": s:norm})
 call s:h("htmlH6",        {"bg": s:bg, "fg": s:norm})
 
+call s:h("GitGutterAdd", {"fg": s:green})
+call s:h("GitGutterDelete", {"fg": s:red})
+call s:h("GitGutterChange", {"fg": s:orange})
+call s:h("GitGutterChangeDelete", {"fg": s:orange})
+
 hi link diffRemoved       DiffDelete
 hi link diffAdded         DiffAdd
 
 " Signify, git-gutter
-hi link SignifySignAdd              LineNr
-hi link SignifySignDelete           LineNr
-hi link SignifySignChange           LineNr
-hi link GitGutterAdd                LineNr
-hi link GitGutterDelete             LineNr
-hi link GitGutterChange             LineNr
-hi link GitGutterChangeDelete       LineNr
+hi link SignifySignAdd              GitGutterAdd
+hi link SignifySignDelete           GitGutterDelete
+hi link SignifySignChange           GitGutterChange

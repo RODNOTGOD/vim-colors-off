@@ -2,6 +2,10 @@
 
 *This is very much a work in progress*
 
+> Fork of the [original project](https://github.com/pbrisbin/vim-colors-off)
+> What was lacking was some colors that play nice with diff and omni menu; oh
+> and a terminal cursor color :P
+
 For a number of weeks, I ran vim with `syntax off`. It was quite nice, 
 with only two annoyances:
 
