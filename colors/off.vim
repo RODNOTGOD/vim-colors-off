@@ -67,8 +67,6 @@ else
   let s:visual          = s:light_blue
 endif
 
-endif
-
 if exists(":terminal")
   highlight TermCursorNC ctermfg=15 guifg=#fdf6e3 ctermbg=14 guibg=#93a1a1 cterm=NONE gui=NONE
 endif
